@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./reactive.js"></script>
+    <title>Vue3.0 proxy实现</title>
+</head>
+<body>
+    <div id="printTheNumber"></div>
+</body>
+<script>
+// 开始执行新建
+let data = {
+    name: '张飞'
+}
+let proxy = reactive(data)
+effect(() => {
+    console.debug('调用视图更新')
+    document.getElementById("printTheNumber").innerHTML = proxy.name
+})
+setTimeout(() => {
+	proxy.name = '字益德'
+}, 2000)
+setTimeout(() => {
+    proxy.name = '燕人'
+}, 1000)
+</script>
+</html>
