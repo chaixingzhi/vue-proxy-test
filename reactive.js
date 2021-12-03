@@ -53,7 +53,7 @@ function createReactiveObject(target) {
         set(target, key, value, receiver) {
             let oldValue = target[key]
             let res = Reflect.set(target, key, value, receiver)
-            if (!hasOwn(target)) {
+            if (!hasOwn(target,key)) {
                 // 执行新建
                 trigger(target, key)
             } else if (oldValue !== value){
